@@ -10,10 +10,18 @@
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- FAFA Icons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Roboto Font -->
+  	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
     <!-- ChartJS -->
     <link href="assets/css/angular-chart.min.css" rel="stylesheet">
+
+     <!-- MathCss -->
+    <link href="assets/css/mathcss.css" rel="stylesheet">
+
 
     <link href="assets/css/style.css" rel="stylesheet">
 
@@ -86,8 +94,19 @@
 		  		 <button ng-click='calcular()' type="buttom" class="btn btn-success button-calc">Calcular</button>
 		  </div>
 		  <div class="col-md-9 corpo"> 
-		  		
-		  		<div class="panel panel-default">
+ 			<div class="row">
+ 				<div class="col-md-5"> 
+ 					<div class="panel panel-default">
+					  <div class="panel-heading">
+					  	<span class='fa fa-area-chart'></span>
+					  	Passo a Passo</div>
+					  <div class="panel-body">
+							Resultado!
+					  </div>
+					</div>
+ 				</div>
+ 				<div class="col-md-7"> 
+ 				<div class="panel panel-default">
 				  <div class="panel-heading">
 				  	<span class='fa fa-area-chart'></span>
 				  	Gráfico Aproximado</div>
@@ -97,6 +116,9 @@
 				</canvas> 
 				  </div>
 				</div>
+ 				</div>
+ 			</div>
+		  		
 
 		  </div>
 	  </div>
