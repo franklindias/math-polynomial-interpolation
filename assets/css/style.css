@@ -8,7 +8,7 @@ body{
 	color: white;
 	text-align: center;
 	min-height: 100vh;
-	padding-bottom: 20px;
+	padding-bottom: 70px;
 }
 
 .corpo{
@@ -19,4 +19,11 @@ body{
 
 .container{
 	width:100%;
+}
+
+.button-calc{
+	width: 92%;
+    position: absolute;
+    bottom: 20px;
+    left: 4%;
 }
