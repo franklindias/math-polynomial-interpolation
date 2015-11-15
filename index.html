@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Matemática - Interpolação Polinomial</title>
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- ChartJS -->
+    <link href="assets/css/angular-chart.min.css" rel="stylesheet">
+
+    <link href="assets/css/style.css" rel="stylesheet">
+
+	<!-- ChartJS -->
+     <script type="text/javascript" src="assets/js/chart.min.js"></script>
+
+    <!-- Angular JS -->
+    <script type="text/javascript" src="assets/js/angular.min.js"></script>
+
+    <!-- ChartJS Angular -->
+    <script type="text/javascript" src="assets/js/angular-chart.min.js"></script>
+
+    <!-- App -->
+    <script type="text/javascript" src="app/app.js"></script>
+
+
+  </head>
+  <body ng-app="mathApp">
+	  <div class="container" >
+	  <div class="row" ng-controller="LineCtrl">
+		  <div class="col-md-3 left-sidebar">
+		  		<br/>
+		  		<h3>Interpolação<br/>
+		  		Polinomial</h3>
+		  		<br/>
+		  		<div>
+		  			<select class="form-control">
+			  			<option value="2">Dois Pontos (2)</option>
+			  			<option value="3">Três Pontos (3)</option>
+			  			<option value="4">Quatro Pontos (4)</option>
+			  			<option value="mais">Mais Pontos</option>
+		  			</select>
+		  		</div><br/>
+
+		  		<div class="row">
+		  			<div class="col-md-6">
+		  				X1: <input type="text" class="form-control">
+		  			</div>
+		  			<div class="col-md-6">
+		  				Y1: <input type="text" class="form-control">
+		  			</div>
+		  		</div><br/>
+		  		<div class="row">
+		  			<div class="col-md-6">
+		  				X2: <input type="text" class="form-control">
+		  			</div>
+		  			<div class="col-md-6">
+		  				Y2: <input type="text" class="form-control">
+		  			</div>
+		  		</div>
+		  		
+		  </div>
+		  <div class="col-md-9 corpo">    
+				<canvas id="line" class="chart chart-line" chart-data="data"
+				  chart-labels="labels" chart-legend="true" chart-series="series">
+				</canvas> 
+		  </div>
+	  </div>
+	  </div>
+
+   
+ 	<script src="assets/js/jquery.min.js"></script>
+
+    <script src="assets/js/bootstrap.min.js"></script>
+  </body>
+</html>

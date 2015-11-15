@@ -1,0 +1,22 @@
+body{
+	overflow-x: hidden;
+	background-color: #f1f1f1;
+}
+
+.left-sidebar{
+	background-color:#6f5499;
+	color: white;
+	text-align: center;
+	min-height: 100vh;
+	padding-bottom: 20px;
+}
+
+.corpo{
+	min-height: 100vh;
+	background-color: #f1f1f1;
+	padding: 20px;
+}
+
+.container{
+	width:100%;
+}
