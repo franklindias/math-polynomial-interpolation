@@ -48,24 +48,34 @@
 
 		  		<div class="row">
 		  			<div class="col-md-6">
-		  				X1: <input type="text" class="form-control">
+		  				X1: <input ng-model='x1' type="number" class="form-control">
 		  			</div>
 		  			<div class="col-md-6">
-		  				Y1: <input type="text" class="form-control">
+		  				Y1: <input ng-model='y1' type="number" class="form-control">
 		  			</div>
 		  		</div><br/>
 		  		<div class="row">
 		  			<div class="col-md-6">
-		  				X2: <input type="text" class="form-control">
+		  				X2: <input ng-model='x2' type="number" class="form-control">
 		  			</div>
 		  			<div class="col-md-6">
-		  				Y2: <input type="text" class="form-control">
+		  				Y2: <input ng-model='y2' type="number" class="form-control">
+		  			</div>
+		  		</div>
+		  		<br/>
+		  		<div class="row">
+		  			<div class="col-md-6">
+		  				X2: <input ng-model='x3' type="number" class="form-control">
+		  			</div>
+		  			<div class="col-md-6">
+		  				Y2: <input ng-model='y3' type="number" class="form-control">
 		  			</div>
 		  		</div>
 		  		
-		  		 <button type="buttom" class="btn btn-success button-calc">Calcular</button>
+		  		 <button ng-click='calcular()' type="buttom" class="btn btn-success button-calc">Calcular</button>
 		  </div>
-		  <div class="col-md-9 corpo">    
+		  <div class="col-md-9 corpo"> 
+		  		{{x1}}
 				<canvas id="line" class="chart chart-line" chart-data="data"
 				  chart-labels="labels" chart-legend="true" chart-series="series">
 				</canvas> 
