@@ -38,12 +38,11 @@
 		  		Polinomial</h3>
 		  		<br/>
 		  		<div>
-		  			<select class="form-control">
-			  			<option value="2">Dois Pontos (2)</option>
-			  			<option value="3">Três Pontos (3)</option>
-			  			<option value="4">Quatro Pontos (4)</option>
-			  			<option value="mais">Mais Pontos</option>
+		  			<select class="form-control" 
+		  			ng-model="selectedItem"
+		  			ng-options="values.indexOf(selectedItem) as selectedItem for selectedItem in values">
 		  			</select>
+
 		  		</div><br/>
 
 		  		<div class="row">
@@ -63,22 +62,40 @@
 		  			</div>
 		  		</div>
 		  		<br/>
-		  		<div class="row">
+		  		<div class="row" ng-show='selectedItem >= 1'>
 		  			<div class="col-md-6">
-		  				X2: <input ng-model='x3' type="number" class="form-control">
+		  				X3: <input ng-model='x3' type="number" class="form-control">
 		  			</div>
 		  			<div class="col-md-6">
-		  				Y2: <input ng-model='y3' type="number" class="form-control">
+		  				Y3: <input ng-model='y3' type="number" class="form-control">
+		  			</div>
+		  		</div>
+
+		  		<br/>
+		  		<div class="row" ng-show='selectedItem >= 2'>
+		  			<div class="col-md-6">
+		  				X4: <input ng-model='x4' type="number" class="form-control">
+		  			</div>
+		  			<div class="col-md-6">
+		  				Y4: <input ng-model='y4' type="number" class="form-control">
 		  			</div>
 		  		</div>
 		  		
 		  		 <button ng-click='calcular()' type="buttom" class="btn btn-success button-calc">Calcular</button>
 		  </div>
 		  <div class="col-md-9 corpo"> 
-		  		{{x1}}
-				<canvas id="line" class="chart chart-line" chart-data="data"
+		  		
+		  		<div class="panel panel-default">
+				  <div class="panel-heading">
+				  	<span class='fa fa-area-chart'></span>
+				  	Gráfico Aproximado</div>
+				  <div class="panel-body">
+					<canvas id="line" class="chart chart-line" chart-data="data"
 				  chart-labels="labels" chart-legend="true" chart-series="series">
 				</canvas> 
+				  </div>
+				</div>
+
 		  </div>
 	  </div>
 	  </div>
