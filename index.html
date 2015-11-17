@@ -37,17 +37,17 @@
 
 		  			<br/>
 		  			<span>Quantidade de Pontos:</span>
-		  			<input placeholder="Quantidade de Pontos" class='form-control' type="number" min='2' ng-model='qntPontos' value="2">
+		  			<input placeholder="Quantidade de Pontos" class='form-control' type="number" min='2' ng-model='qntPontos' value="2" ng-change='mudarQuantPontos()'>
 		  			
 		  		</div><br/>
 		  		
 		  		<div class="row" ng-repeat='n in range()'>
 		  			<div class="col-md-6">
-		  				X{{n+1}}: <input ng-model='x[n]' type="number" 
+		  				X{{n+1}}: <input ng-model='x[n]' ng-init='x[n]=0' type="number" 
 		  				class="form-control">
 		  			</div>
 		  			<div class="col-md-6">
-		  				Y{{n+1}}: <input ng-model='fx[n]' type="number" 
+		  				Y{{n+1}}: <input ng-model='fx[n]' ng-init='fx[n]=0' value="0" type="number" 
 		  				class="form-control">
 		  			</div><br/>
 		  		</div>
