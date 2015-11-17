@@ -2,11 +2,43 @@ app = angular.module('mathApp', ['chart.js']);
 
 app.controller('LineCtrl', function ($scope) {
 
-  $scope.labels = ["January", "February", "March", "April", "May", "June", "July"];
-  $scope.series = ['Series A', 'Series B'];
-  $scope.data = [
-	    [65, 59, 80, 81, 56, 55, 40],
-	    [28, 48, 40, 19, 86, 27, 90]
+    $scope.qntPontos = 2;
+
+    $scope.x = [];
+    $scope.fx = [];
+
+    $scope.labels = $scope.x;
+    $scope.series = ['Função F(X)'];
+    $scope.data = [
+	    $scope.fx
 	  ];
+
+    $scope.calcular = function(){
+	 $scope.gerarGrafico();
+
+    }
+    
+    $scope.gerarGrafico = function(){
+        console.log('funcao gerarGrafico()');
+        console.log('---------------------');
+        console.log();
+        console.log($scope.x);
+        console.log($scope.fx);
+	  	$scope.labels = $scope.x;
+        $scope.data = [
+			    $scope.fx
+			  ];
+    }
+    
+    $scope.range = function(){
+        var arratQntPontos = [];
+        var qnt = $scope.qntPontos;
+        
+        for (var i = 0; i < qnt; i++) { 
+            arratQntPontos.push(i) 
+        } 
+        return arratQntPontos;
+    }
+
 });
-       
+
