@@ -24,8 +24,6 @@
 
     <link href="assets/css/style.css" rel="stylesheet">
 
-
-
   </head>
   <body ng-app="mathApp">
 	  <div class="container" >
@@ -38,6 +36,7 @@
 		  		<div>
 
 		  			<br/>
+		  			<span>Quantidade de Pontos:</span>
 		  			<input placeholder="Quantidade de Pontos" class='form-control' type="number" min='2' ng-model='qntPontos' value="2">
 		  			
 		  		</div><br/>
@@ -52,7 +51,6 @@
 		  				class="form-control">
 		  			</div><br/>
 		  		</div>
-		  		
 		  		
 		  		 <button ng-click='calcular()' type="buttom" class="btn btn-success button-calc">Calcular</button>
 		  </div>
