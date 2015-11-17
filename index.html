@@ -22,20 +22,8 @@
      <!-- MathCss -->
     <link href="assets/css/mathcss.css" rel="stylesheet">
 
-
     <link href="assets/css/style.css" rel="stylesheet">
 
-	<!-- ChartJS -->
-     <script type="text/javascript" src="assets/js/chart.min.js"></script>
-
-    <!-- Angular JS -->
-    <script type="text/javascript" src="assets/js/angular.min.js"></script>
-
-    <!-- ChartJS Angular -->
-    <script type="text/javascript" src="assets/js/angular-chart.min.js"></script>
-
-    <!-- App -->
-    <script type="text/javascript" src="app/app.js"></script>
 
 
   </head>
@@ -48,48 +36,23 @@
 		  		Polinomial</h3>
 		  		<br/>
 		  		<div>
-		  			<select class="form-control" 
-		  			ng-model="selectedItem"
-		  			ng-options="values.indexOf(selectedItem) as selectedItem for selectedItem in values">
-		  			</select>
 
+		  			<br/>
+		  			<input placeholder="Quantidade de Pontos" class='form-control' type="number" min='2' ng-model='qntPontos' value="2">
+		  			
 		  		</div><br/>
-
-		  		<div class="row">
+		  		
+		  		<div class="row" ng-repeat='n in range()'>
 		  			<div class="col-md-6">
-		  				X1: <input ng-model='x1' type="number" class="form-control">
+		  				X{{n+1}}: <input ng-model='x[n]' type="number" 
+		  				class="form-control">
 		  			</div>
 		  			<div class="col-md-6">
-		  				Y1: <input ng-model='y1' type="number" class="form-control">
-		  			</div>
-		  		</div><br/>
-		  		<div class="row">
-		  			<div class="col-md-6">
-		  				X2: <input ng-model='x2' type="number" class="form-control">
-		  			</div>
-		  			<div class="col-md-6">
-		  				Y2: <input ng-model='y2' type="number" class="form-control">
-		  			</div>
+		  				Y{{n+1}}: <input ng-model='fx[n]' type="number" 
+		  				class="form-control">
+		  			</div><br/>
 		  		</div>
-		  		<br/>
-		  		<div class="row" ng-show='selectedItem >= 1'>
-		  			<div class="col-md-6">
-		  				X3: <input ng-model='x3' type="number" class="form-control">
-		  			</div>
-		  			<div class="col-md-6">
-		  				Y3: <input ng-model='y3' type="number" class="form-control">
-		  			</div>
-		  		</div>
-
-		  		<br/>
-		  		<div class="row" ng-show='selectedItem >= 2'>
-		  			<div class="col-md-6">
-		  				X4: <input ng-model='x4' type="number" class="form-control">
-		  			</div>
-		  			<div class="col-md-6">
-		  				Y4: <input ng-model='y4' type="number" class="form-control">
-		  			</div>
-		  		</div>
+		  		
 		  		
 		  		 <button ng-click='calcular()' type="buttom" class="btn btn-success button-calc">Calcular</button>
 		  </div>
@@ -98,14 +61,25 @@
  				<div class="col-md-5"> 
  					<div class="panel panel-default">
 					  <div class="panel-heading">
-					  	<span class='fa fa-area-chart'></span>
+					  	<span class='fa fa-calculator'></span>
 					  	Passo a Passo</div>
 					  <div class="panel-body">
-							Resultado!
+							<h4><span class="label label-success">
+							    Separando o primeiro ponto
+							</span></h4>
+							<hr/>
 					  </div>
 					</div>
  				</div>
  				<div class="col-md-7"> 
+ 				<div class="panel panel-default">
+					  <div class="panel-heading">
+					  	<span class='fa fa-area-chart'></span>
+					  	Função Gerada</div>
+					  <div class="panel-body text-center">
+							<h3>F(X) = X²+3x-1</h3>
+					  </div>
+					</div>
  				<div class="panel panel-default">
 				  <div class="panel-heading">
 				  	<span class='fa fa-area-chart'></span>
@@ -119,11 +93,22 @@
  				</div>
  			</div>
 		  		
-
 		  </div>
 	  </div>
 	  </div>
+   
+   	<!-- ChartJS -->
+     <script type="text/javascript" src="assets/js/chart.min.js"></script>
 
+    <!-- Angular JS -->
+    <script type="text/javascript" src="assets/js/angular.min.js"></script>
+
+    <!-- ChartJS Angular -->
+    <script type="text/javascript" src="assets/js/angular-chart.min.js"></script>
+
+    <!-- App -->
+    <script type="text/javascript" src="app/app.js"></script>
+    
    
  	<script src="assets/js/jquery.min.js"></script>
 
