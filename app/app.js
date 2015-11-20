@@ -7,10 +7,18 @@ app.controller('LineCtrl', function ($scope) {
     //arrays para salvar valores dos pontos inseridos
     $scope.x = [];
     $scope.fx = [];
+    
+    $scope.xInt = 0;
+    
+    $scope.chartOpts = {
+        scaleBeginAtZero: true,
+        scaleFontSize: 12,
+        tooltipTemplate: "<%if (label){%>(<%=label%>,<%}%><%= value%>)",
+    }
 
-    $scope.labels = $scope.x;
-    $scope.series = ['Função F(X)'];
-    $scope.data = [$scope.fx];
+    $scope.chartLabels = $scope.x;
+    $scope.chartSeries = ['Função F(X)'];
+    $scope.chartData = [$scope.fx];
 
     //funcao para realizar a interpolacao, chamara outra funcao de acordo 
     //com a quantidade de pontos

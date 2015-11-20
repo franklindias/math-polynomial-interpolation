@@ -33,14 +33,32 @@
 		  		<h3>Interpolação<br/>
 		  		Polinomial</h3>
 		  		<br/>
-		  		<div>
-
 		  			<br/>
-		  			<span>Quantidade de Pontos:</span>
-		  			<input placeholder="Quantidade de Pontos" class='form-control' type="number" min='2' ng-model='qntPontos' value="2" ng-change='mudarQuantPontos()'>
+		  			<div class="row">
+		  				<div class="col-md-6"> 
+		  						<span>Qual ponto X deseja obter resultado?</span>
+		  				</div>
+		  				<div class="col-md-6">
+		  					<input ng-model='xInt' ng-init='xInt=0' type="number" class="form-control">
+		  				</div>
+		  				
+		  			</div>
 		  			
+		  			<br/>
+		  			
+		  			<div class="row">
+		  				<div class="col-md-6"> 
+		  						<span>Quantos pontos você possui?</span>
+		  				</div>
+		  				<div class="col-md-6">
+		  					<input placeholder="Quantidade de Pontos" class='form-control' 
+		  					type="number" min='2' ng-model='qntPontos' value="2" ng-change='mudarQuantPontos()'>
+		  				</div>
 		  		</div><br/>
 		  		
+		  		
+		  		
+		  		<span>Insira seus pontos abaixo</span>
 		  		<div class="row" ng-repeat='n in range()'>
 		  			<div class="col-md-6">
 		  				X{{n+1}}: <input ng-model='x[n]' ng-init='x[n]=0' type="number" 
@@ -83,8 +101,8 @@
 				  	<span class='fa fa-area-chart'></span>
 				  	Gráfico Aproximado</div>
 				  <div class="panel-body">
-					<canvas id="line" class="chart chart-line" chart-data="data"
-				  chart-labels="labels" chart-legend="true" chart-series="series">
+					<canvas id="line" class="chart chart-line" chart-data="chartData"
+				  chart-labels="chartLabels" chart-options="chartOpts" chart-legend="true" chart-series="chartSeries">
 				</canvas> 
 				  </div>
 				</div>
