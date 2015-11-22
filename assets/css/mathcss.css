@@ -13,16 +13,8 @@ body{
 }
 
 div[equation]{
-    width:80%;
-    margin-left:10%;
-    margin-right:10%;
-    height:auto;
-    margin-top:50px;
-    min-height: 100px;
-    margin-left:auto;
-    margin-right:auto;
+ 
    /* border: 1px #ddd solid;*/
-    box-sizing: border-box;
 }
 
 div[equation]:after{

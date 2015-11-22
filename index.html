@@ -34,7 +34,7 @@
 		  		Polinomial</h3>
 		  		<br/>
 		  			<br/>
-		  			<div class="row">
+		  			<div class="row" style="background-color:#664575; padding: 10px;">
 		  				<div class="col-md-6"> 
 		  						<span>Qual ponto X deseja obter resultado?</span>
 		  				</div>
@@ -46,7 +46,7 @@
 		  			
 		  			<br/>
 		  			
-		  			<div class="row">
+		  			<div class="row" style="background-color: #664575; padding: 10px;">
 		  				<div class="col-md-6"> 
 		  						<span>Quantos pontos você possui?</span>
 		  				</div>
@@ -80,10 +80,25 @@
 					  	<span class='fa fa-calculator'></span>
 					  	Passo a Passo</div>
 					  <div class="panel-body">
-							<h4><span class="label label-success">
-							    Separando o primeiro ponto
-							</span></h4>
-							<hr/>
+						  <div ng-show='!status'>
+						  		<div ng-repeat='step in steps'>
+								<h4><span class="label label-success">
+								    {{step.name}}
+								</span></h4>
+
+									<div equation style="padding:0">
+										<div fraction>
+											<div top>{{step.num}}</div>
+											<div bottom>{{step.den}}</div>
+
+										</div>
+									</div>
+									<hr/>
+								</div>
+							</div>	
+							<div ng-show='status'>
+								<span class="fa fa-spinner fa-spin" style="text-align:center; font-size:25px;">
+							</div>
 					  </div>
 					</div>
  				</div>
@@ -91,9 +106,9 @@
  				<div class="panel panel-default">
 					  <div class="panel-heading">
 					  	<span class='fa fa-area-chart'></span>
-					  	Função Gerada</div>
+					  	Resultado</div>
 					  <div class="panel-body text-center">
-							<h3>F(X) = X²+3x-1</h3>
+							<h2>{{resultado|number:2}}</h2>
 					  </div>
 					</div>
  				<div class="panel panel-default">
@@ -117,9 +132,11 @@
 
     <!-- Angular JS -->
     <script type="text/javascript" src="assets/js/angular.min.js"></script>
-
     <!-- ChartJS Angular -->
     <script type="text/javascript" src="assets/js/angular-chart.min.js"></script>
+
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular-sanitize.js"></script>
 
     <!-- App -->
     <script type="text/javascript" src="app/app.js"></script>
