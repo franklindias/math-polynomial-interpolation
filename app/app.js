@@ -101,7 +101,7 @@ app.controller('LineCtrl', function ($scope) {
     		$scope.lg[i] = numerador/denominador;
 
     		$scope.steps.push(
-    			{	name: 'Calculando L('+i+'):', 
+    			{	name: 'Calculando L'+i+'(X):', 
     				step: numerador+'/'+denominador+' = '+$scope.lg[i]})
     		
 			//reiniciando numerador e denominador para o proximo L(n)
@@ -112,7 +112,7 @@ app.controller('LineCtrl', function ($scope) {
     	for (var i = 0; i < $scope.lg.length; i++){
 			
 			$scope.steps.push(
-    			{	name: 'Multiplicando L('+i+') com FX('+i+'):', 
+    			{	name: 'Multiplicando L'+i+'(X) com FX('+i+'):', 
     				step: $scope.lg[i]+'*'+$scope.fx[i]+' = '+$scope.fx[i] * $scope.lg[i]})
 				result = (result + ($scope.fx[i] * $scope.lg[i]));
     	}
@@ -126,7 +126,7 @@ app.controller('LineCtrl', function ($scope) {
 				somas = ($scope.lg[i]*$scope.fx[i])+''+somas;
     	}
 			$scope.steps.push(
-    			{	name: 'Somando todos os L(n):', 
+    			{	name: 'Somando todos os Ln(X):', 
     				step: somas+'='+result})
     					
     	return result;
