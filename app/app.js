@@ -121,9 +121,9 @@ app.controller('LineCtrl', function ($scope) {
 		
 		for (var i = 0; i < $scope.lg.length; i++){
 			if (i == $scope.lg.length-1)
-				somas = $scope.lg[i]+'+'+somas;
+				somas = ($scope.lg[i]*$scope.fx[i])+'+'+somas;
 			else
-				somas = $scope.lg[i]+''+somas;
+				somas = ($scope.lg[i]*$scope.fx[i])+''+somas;
     	}
 			$scope.steps.push(
     			{	name: 'Somando todos os L(n):', 
