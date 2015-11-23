@@ -1,3 +1,5 @@
+#### Função de Lagrange Genérica
+
  ```javascript
  $scope.lagrange = function(){
     var numerador = 1;
