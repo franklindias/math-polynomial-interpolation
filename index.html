@@ -55,17 +55,18 @@
 		  					type="number" min='2' ng-model='qntPontos' value="2" ng-change='mudarQuantPontos()'>
 		  				</div>
 		  		</div><br/>
-		  		
-		  		
-		  		
+		  		 
 		  		<span>Insira seus pontos abaixo</span>
+		  		<div class="row text-red" >
+		  			{{erro}}
+		  		</div>
 		  		<div class="row" ng-repeat='n in range()'>
 		  			<div class="col-md-6">
-		  				X{{n+1}}: <input ng-model='x[n]' ng-init='x[n]=0' type="number" 
+		  				X{{n}}: <input ng-model='x[n]' ng-change='' ng-init='x[n]=0' type="number" 
 		  				class="form-control">
 		  			</div>
 		  			<div class="col-md-6">
-		  				Y{{n+1}}: <input ng-model='fx[n]' ng-init='fx[n]=0' value="0" type="number" 
+		  				Y{{n}}: <input ng-model='fx[n]' ng-init='fx[n]=0' value="0" type="number" 
 		  				class="form-control">
 		  			</div><br/>
 		  		</div>
@@ -80,20 +81,22 @@
 					  	<span class='fa fa-calculator'></span>
 					  	Passo a Passo</div>
 					  <div class="panel-body">
-						  <div ng-show='!status'>
+						  <div ng-show='!status && !erro'>
 						  		<div ng-repeat='step in steps'>
 								<h4><span class="label label-success">
 								    {{step.name}}
 								</span></h4>
 
-									<div equation style="padding:0">
+									<!--<div equation style="padding:0">
 										<div fraction>
 											<div top>{{step.num}}</div>
 											<div bottom>{{step.den}}</div>
-
+										</div> 
 										</div>
-									</div>
-									<hr/>
+										-->
+									
+									<h3>{{step.step}}</h3>
+									
 								</div>
 							</div>	
 							<div ng-show='status'>
@@ -107,8 +110,8 @@
 					  <div class="panel-heading">
 					  	<span class='fa fa-area-chart'></span>
 					  	Resultado</div>
-					  <div class="panel-body text-center">
-							<h2>{{resultado|number:2}}</h2>
+					  <div class="panel-body text-center" >
+							<h2 ng-show='!erro'>F({{xInt}}) = {{resultado|number:2}}</h2>
 					  </div>
 					</div>
  				<div class="panel panel-default">

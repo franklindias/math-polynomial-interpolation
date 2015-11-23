@@ -1,22 +1,32 @@
 app = angular.module('mathApp', ['chart.js']);
 
 app.controller('LineCtrl', function ($scope) {
-
+	//define a quantidade de pontos que o usuário já possui
     $scope.qntPontos = 2;
-
+	
+	//ponto X o qual o usuário deseja obter resultado
+    $scope.xInt = 0;
+	
+	//armazena o valor final do resultado baseado no algoritmo de lagrange
     $scope.resultado = 0;
-
+	
+	//define a situção atual, se está calculando ou aguardando pontos
     $scope.status = false;
     
     //arrays para salvar valores dos pontos inseridos
     $scope.x = [];
     $scope.fx = [];
 
+	//array para guardar os calculos de lagrange por cada ponto
     $scope.lg = [];
+	
+	//array para armazenar o passo a passo do calculo de lagrange
     $scope.steps = [];
+	
+	//variavel de controle de erros
+	$scope.erro = null
     
-    $scope.xInt = 0;
-    
+	//configuraçoes adicionais do gráfico
     $scope.chartOpts = {
         scaleFontSize: 12,
         tooltipTemplate: "<%if (label){%>(<%=label%>,<%}%><%= value%>)",
@@ -26,15 +36,25 @@ app.controller('LineCtrl', function ($scope) {
     $scope.chartSeries = ['Função F(X)'];
     $scope.chartData = [$scope.fx];
 
-    //funcao para realizar a interpolacao, chamara outra funcao de acordo 
-    //com a quantidade de pontos
+    //funcao para realizar o calculo de interpolacao, 
+	//e outros detalhes referentes ao calculo
     $scope.calcular = function(){
-    	$scope.steps = []
-    	$scope.status = true;
-		$scope.resultado = $scope.lagrange();
-		$scope.gerarGrafico();
-		$scope.status = false;
+		var verifica = $scope.verificaPontos();
+		if (!verifica){
+			$scope.steps = []
+			$scope.status = true;
+			$scope.resultado = $scope.lagrange();
+			$scope.gerarGrafico();
+			$scope.status = false;
+		}else{
+			
+		}
     }
+	
+	//funcao para marcar nos inputs caso ele esteja repetido
+	$scope.pontosRepetidos = function(){
+		
+	}
     
     //funcao para atualizar os dados do gráfico
     $scope.gerarGrafico = function(){
@@ -42,9 +62,12 @@ app.controller('LineCtrl', function ($scope) {
         $scope.chartData = [$scope.fx];
     }
     
-    //funcao para limpar array de qntade de pontos ao mudar a quantidade
+    //funcao para limpar array de ponts ao mudar a quantidade 
+	//de pontos 
     $scope.mudarQuantPontos = function(){
        
+		$scope.steps = [];
+		$scope.resultado = 0;
         if (!$scope.qntPontos)
              $scope.qntPontos = 2;
         
@@ -60,60 +83,51 @@ app.controller('LineCtrl', function ($scope) {
         $scope.gerarGrafico();
     }	
 
-
+	//algoritmo de lagrange
     $scope.lagrange = function(){
     	var numerador = 1;
     	var denominador = 1;
     	var result = 0;
-
+		$scope.steps = []
+		
     	for (var i = 0; i < $scope.x.length; i++){
     		for (var j = 0; j < $scope.x.length; j++){
     			if (j != i){
-    				
     				numerador = (numerador * ($scope.xInt - $scope.x[j]));
     				denominador = (denominador * ($scope.x[i] - $scope.x[j]));
     			}	
     		}
 
-
     		$scope.lg[i] = numerador/denominador;
 
     		$scope.steps.push(
     			{	name: 'Calculando L('+i+'):', 
-    				num:numerador, 
-    				den:denominador,
-    				res:numerador/denominador})
+    				step: numerador+'/'+denominador+' = '+$scope.lg[i]})
     		
+			//reiniciando numerador e denominador para o proximo L(n)
     		numerador = 1;
 	    	denominador = 1;
     	}
 
     	for (var i = 0; i < $scope.lg.length; i++){
-
-    		result = (result + ($scope.fx[i] * $scope.lg[i]));
+			
+			$scope.steps.push(
+    			{	name: 'Multiplicando L('+i+') com FX('+i+'):', 
+    				step: $scope.lg[i]+'*'+$scope.fx[i]+' = '+$scope.fx[i] * $scope.lg[i]})
+				result = (result + ($scope.fx[i] * $scope.lg[i]));
     	}
-    	
-    	/*console.log("-------")
-    	var l0 = 	(($scope.xInt - $scope.x[1]) * ($scope.xInt - $scope.x[2])* ($scope.xInt - $scope.x[3])) / 
-    				(($scope.x[0] - $scope.x[1]) * ($scope.x[0] - $scope.x[2])* ($scope.x[0] - $scope.x[3]));
-    	console.log(l0)
-    	var l1 = 	(($scope.xInt - $scope.x[0]) * ($scope.xInt - $scope.x[2])* ($scope.xInt - $scope.x[3])) / 
-    				(($scope.x[1] - $scope.x[0]) * ($scope.x[1] - $scope.x[2])* ($scope.x[1] - $scope.x[3]));
-    	console.log(l1)
-    	var l2 = 	(($scope.xInt - $scope.x[0]) * ($scope.xInt - $scope.x[1])* ($scope.xInt - $scope.x[3])) / 
-    				(($scope.x[2] - $scope.x[0]) * ($scope.x[2] - $scope.x[1])* ($scope.x[2] - $scope.x[3]));
-    	console.log(l2)
-    	var l3 = 	(($scope.xInt - $scope.x[0]) * ($scope.xInt - $scope.x[1])* ($scope.xInt - $scope.x[2])) / 
-    				(($scope.x[3] - $scope.x[0]) * ($scope.x[3] - $scope.x[1])* ($scope.x[3] - $scope.x[2]));
-    	console.log(l3)
-
-    	var resultado = ($scope.fx[0] * l0) + 
-    					($scope.fx[1] * l1) + 
-    					($scope.fx[2] * l2) + 
-    					($scope.fx[3] * l3);
-
-		console.log('resultado manual')
-    	console.log(resultado)*/
+		
+		var somas = '';
+		
+		for (var i = 0; i < $scope.lg.length; i++){
+			if (i == $scope.lg.length-1)
+				somas = $scope.lg[i]+'+'+somas;
+			else
+				somas = $scope.lg[i]+''+somas;
+    	}
+			$scope.steps.push(
+    			{	name: 'Somando todos os L(n):', 
+    				step: somas+'='+result})
     					
     	return result;
     }
@@ -129,7 +143,21 @@ app.controller('LineCtrl', function ($scope) {
         } 
         return arratQntPontos;
     }
-
+	
+	//funcao para verificar se existem pontos repetidos na lista de pontos inseridos
+	$scope.verificaPontos = function(){
+		for (var i = 0; i < $scope.x.length; i++){
+    		for (var j = 0; j < $scope.x.length; j++){
+				if (($scope.x[i] == $scope.x[j]) && (i!=j)){
+					$scope.erro = 'Os pontos X('+i+') e X('+j+') estão se repetindo!';
+					$scope.steps = []
+					return [i,j];
+				}
+    		}	
+    	}
+		$scope.erro = null;
+		return null;
+    }
 
 });
 
