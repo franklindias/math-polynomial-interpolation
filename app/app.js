@@ -93,8 +93,9 @@ app.controller('LineCtrl', function ($scope) {
     	for (var i = 0; i < $scope.x.length; i++){
     		console.log("------------------INICIO FOR 1(UM)----------------");
     		for (var j = 0; j < $scope.x.length; j++){
+    			console.log("------------------INICIO FOR 2(DOIS)----------------");
     			if (j != i){
-    				console.log("------------------INICIO FOR 2(DOIS)----------------");
+    			
     				numerador = (numerador * ($scope.xInt - $scope.x[j]));
     				denominador = (denominador * ($scope.x[i] - $scope.x[j]));
     				
@@ -105,13 +106,15 @@ app.controller('LineCtrl', function ($scope) {
     				console.log("numerador --> "+numerador);
     				console.log("denominador --> "+denominador);
     				
-    				console.log("----------------FIM FOR 2(DOIS)------------------");
+    			
     			}
+    			console.log("----------------FIM FOR 2(DOIS)------------------");
     		}
     		
     		$scope.lg[i] = numerador/denominador;
-    		console.log("----------------FIM FOR 1(UM)------------------");
+    		
     		console.log("lg("+i+")  -> "+$scope.lg[i]);
+    		console.log("----------------FIM FOR 1(UM)------------------");
 
     		$scope.steps.push(
     			{	name: 'Calculando L'+i+'(X):', 
@@ -133,11 +136,8 @@ app.controller('LineCtrl', function ($scope) {
 		var somas = '';
 		
 		for (var i = 0; i < $scope.lg.length; i++){
-			if (i == $scope.lg.length-1)
 				somas = ($scope.lg[i]*$scope.fx[i])+'+'+somas;
-			else
-				somas = ($scope.lg[i]*$scope.fx[i])+''+somas;
-    	}
+    		}
 			$scope.steps.push(
     			{	name: 'Somando todos os Ln(X):', 
     				step: somas+'='+result})
