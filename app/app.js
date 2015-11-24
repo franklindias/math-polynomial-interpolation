@@ -100,11 +100,15 @@ app.controller('LineCtrl', function ($scope) {
     				
     				console.log("i --> "+i);
     				console.log("j --> "+j);
+    				console.log("Xi("+i+") --> "+$scope.x[i]);
+    				console.log("Xj("+j+") --> "+$scope.x[j]);
     				console.log("numerador --> "+numerador);
     				console.log("denominador --> "+denominador);
+    				
     				console.log("----------------FIM FOR 2(DOIS)------------------");
-    			}	
+    			}
     		}
+    		
     		$scope.lg[i] = numerador/denominador;
     		console.log("----------------FIM FOR 1(UM)------------------");
     		console.log("lg("+i+")  -> "+$scope.lg[i]);
