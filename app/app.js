@@ -91,14 +91,23 @@ app.controller('LineCtrl', function ($scope) {
 		$scope.steps = []
 		
     	for (var i = 0; i < $scope.x.length; i++){
+    		console.log("------------------INICIO FOR 1(UM)----------------");
     		for (var j = 0; j < $scope.x.length; j++){
     			if (j != i){
+    				console.log("------------------INICIO FOR 2(DOIS)----------------");
     				numerador = (numerador * ($scope.xInt - $scope.x[j]));
     				denominador = (denominador * ($scope.x[i] - $scope.x[j]));
+    				
+    				console.log("i --> "+i);
+    				console.log("j --> "+j);
+    				console.log("numerador --> "+numerador);
+    				console.log("denominador --> "+denominador);
+    				console.log("----------------FIM FOR 2(DOIS)------------------");
     			}	
     		}
-
     		$scope.lg[i] = numerador/denominador;
+    		console.log("----------------FIM FOR 1(UM)------------------");
+    		console.log("lg("+i+")  -> "+$scope.lg[i]);
 
     		$scope.steps.push(
     			{	name: 'Calculando L'+i+'(X):', 
